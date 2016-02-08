@@ -31,7 +31,7 @@ public class Main {
 		// // Show it.
 		// System.out.println(data);
 		CharReader cr = new CharReader();
-		cr.reformatFile2("United States");
+		cr.processData(CharReader.sourcePath,CharReader.destinationPath,"United States");
 	}
 
 }

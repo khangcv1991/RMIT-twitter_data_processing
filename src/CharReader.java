@@ -12,8 +12,29 @@ import com.google.gson.Gson;
 
 public class CharReader {
 
-	private static String sourcePath = "D:\\RMIT\\Summer project\\twitterEnglish_Feb\\";
-	private static String destinationPath = "D:\\RMIT\\Summer project\\output\\";
+	public static String sourcePath = "D:\\RMIT\\Summer project\\twitterEnglish_Feb\\";
+	public static String destinationPath = "D:\\RMIT\\Summer project\\output\\";
+
+	public void processData(String souFolderName, String destFolderName,
+			String countryName) {
+
+		File destDirectoryRoot = new File(destFolderName + countryName);
+		File sourDirectoryRoot = new File(souFolderName);
+		if (destDirectoryRoot.exists() == false) {
+			try {
+				destDirectoryRoot.mkdir();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+
+		for (String fileName : sourDirectoryRoot.list()) {
+			filterDataFile(countryName, souFolderName + fileName,
+					destDirectoryRoot.getPath() + "\\" + fileName);
+		}
+
+	}
 
 	public void filterDataFile(String country, String sourceFileLink,
 			String destFileLink) {
